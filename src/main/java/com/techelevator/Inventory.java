@@ -1,19 +1,24 @@
 package com.techelevator;
 
-import com.techelevator.view.Item;
-
-import java.util.Scanner;
+import java.util.List;
 import java.util.TreeMap;
 
 public class Inventory {
     //Stock inventory constructor
     // Call the file reader method
+private TreeMap inventory = new TreeMap<>();
 
-    private TreeMap<String, Item>inventory;
+
     public Inventory(){
         FileReader fileReader = new FileReader();
-        fileReader.stockInventory;
+       List<Item> inventoryList = fileReader.stockInventory();
+       for (Item item : inventoryList){
+           inventory.put(item.getProductCode(),item);
+       }
 
     }
 
+    public TreeMap getInventory() {
+        return inventory;
+    }
 }

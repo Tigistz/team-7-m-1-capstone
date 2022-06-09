@@ -9,5 +9,8 @@
         <module name="m1-java-capstone-catering-system" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="m01-week-4-review-lecture" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
