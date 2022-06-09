@@ -14,6 +14,8 @@ public class CateringSystemCLI {
 	
 	public void run() {
 		//probably should do stuff here... ;-)
+		// This is where call the stock inventory method
+
 
 	}
 	

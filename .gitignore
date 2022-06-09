@@ -25,6 +25,8 @@ node_modules/
 .idea/dictionaries
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
+idea
+.idea/
 
 ## IntelliJ File-based project format:
 *.iws
