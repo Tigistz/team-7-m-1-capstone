@@ -1,12 +1,12 @@
 package com.techelevator;
 
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Inventory {
     //Stock inventory constructor
     // Call the file reader method
-private TreeMap inventory = new TreeMap<>();
+private TreeMap<String, Item> inventory = new TreeMap<>();
+
 
 
     public Inventory(){
@@ -15,10 +15,11 @@ private TreeMap inventory = new TreeMap<>();
        for (Item item : inventoryList){
            inventory.put(item.getProductCode(),item);
        }
-
     }
+
 
     public TreeMap getInventory() {
         return inventory;
     }
+
 }

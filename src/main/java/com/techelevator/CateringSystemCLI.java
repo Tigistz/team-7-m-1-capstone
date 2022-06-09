@@ -19,9 +19,9 @@ public class CateringSystemCLI {
 Inventory inventory = new Inventory();
 UserInterface ui = new UserInterface();
 
-boolean isrunning = true;
+boolean isRunning = true;
 
-while (isrunning){
+while (isRunning){
 	// Call display menu
 String answer =	ui.displayMainMenu();
 	if (answer.equals("1")){

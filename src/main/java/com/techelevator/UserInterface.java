@@ -1,8 +1,6 @@
 package com.techelevator;
 
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class UserInterface {
     //Method called display menu
@@ -19,12 +17,21 @@ public class UserInterface {
 
     }
     public void displayCateringItems(Inventory inventory){
-        String header =   String.format("%-15s%-15s%-10s%-10s","Product Code","Description","Qty", "Price");
+
+        String header =   String.format("%-15s%-25s%-10s%-10s","Product Code","Description","Qty", "Price");
         System.out.println(header);
-        for (Object item : inventory.getInventory().descendingKeySet()){
-           // Product Code     Description        Qty      Price
-          String testString =   String.format("%-15s%-15s%-10s%-10s","Product Code","Description","Qty", "Price");
-            System.out.println(testString);
+        // for (Map.Entry<String, String> nameZip : nameToZip.entrySet())
+       // Set<String> keys = stateCodes.keySet();
+        Map<String, Item> inventoryMap = inventory.getInventory();
+        //for (Map.Entry<K, V> entry : myMap.entrySet()) {
+        //     System.out.println("Key: " + entry.getKey() + ". Value: " + entry.getValue());
+
+        for ( Map.Entry<String,Item> key : inventoryMap.entrySet()){
+            String formattedString = String.format("%-15s%-25s%-10s%-10s",key.getValue().getProductCode(),key.getValue().getDescription(),key.getValue().getQuanity(), key.getValue().getPrice());
+            System.out.println(formattedString);
+
+
+
 
     }
 
