@@ -29,11 +29,16 @@ public class UserInterface {
 
         for (Map.Entry<String, Item> key : inventoryMap.entrySet()) {
             int quantity = key.getValue().getQuanity();
-        //  if (quantity == 0)
-                
+          if (quantity == 0){
+              String formattedString = String.format("%-15s%-25s%-10s%-10s", key.getValue().getProductCode(), key.getValue().getDescription(), "SOLD OUT", key.getValue().getPrice());
+              System.out.println(formattedString);
 
-          //  String formattedString = String.format("%-15s%-25s%-10s%-10s", key.getValue().getProductCode(), key.getValue().getDescription(), key.getValue().getQuanity(), key.getValue().getPrice());
-          //  System.out.println(formattedString);
+          }
+            else {
+
+              String formattedString = String.format("%-15s%-25s%-10s%-10s", key.getValue().getProductCode(), key.getValue().getDescription(), key.getValue().getQuanity(), key.getValue().getPrice());
+              System.out.println(formattedString);
+          }
 
 
         }
