@@ -39,17 +39,31 @@ public class UserInterface {
     //    (2) Select Products
     //    (3) Complete Transaction
     //    Current Account Balance: $0.00
-    public String subMenu(){
+    public String subMenu(double currentBalance){
         System.out.println("**************************************");
         System.out.println("Please select the action to perform");
         System.out.println("1.)Add Money\n2.) Select Products\n3.)CompleteTransaction");
-        // This is where Current Balance Will Be
+        System.out.println( "Current Balance: " + currentBalance);
        String answer = userInput.nextLine();
         return answer;
     }
 
     public void displayErrorMessage(String message){
         System.err.println(message);;
+    }
+    public  double addMoney(){
+        System.out.println("Please insert(type) your bills. Only accepts $1,$5,$10,$20,$50,and $100 dollar bills");
+      String bill =  userInput.nextLine();
+        if (bill.equals("1") || bill.equals("5") || bill.equals("10") || bill.equals("20") || bill.equals("50") || bill.equals("100")){
+            System.out.println("Money accepted.");
+            Double billAsDouble = Double.parseDouble(bill);
+            return  billAsDouble;
+        }
+        else {
+            displayErrorMessage("That is not a valid bill.");
+            return 0.00;
+        }
+
     }
 
 }
