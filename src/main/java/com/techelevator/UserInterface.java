@@ -28,6 +28,10 @@ public class UserInterface {
         //     System.out.println("Key: " + entry.getKey() + ". Value: " + entry.getValue());
 
         for (Map.Entry<String, Item> key : inventoryMap.entrySet()) {
+            int quantity = key.getValue().getQuanity();
+            if (quantity == 0)
+                
+
             String formattedString = String.format("%-15s%-25s%-10s%-10s", key.getValue().getProductCode(), key.getValue().getDescription(), key.getValue().getQuanity(), key.getValue().getPrice());
             System.out.println(formattedString);
 
