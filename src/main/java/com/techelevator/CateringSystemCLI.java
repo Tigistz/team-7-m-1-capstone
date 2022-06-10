@@ -1,6 +1,10 @@
 package com.techelevator;
 
 
+import java.security.Key;
+import java.util.Map;
+import java.util.TreeMap;
+
 public class CateringSystemCLI {
 
 
@@ -46,6 +50,24 @@ String answer =	ui.displayMainMenu();
 				}
 
 		}
+			else if (subAnswer.equals("2")){
+				ui.displayCateringItems(inventory);
+				String productCode = ui.selectProduct();
+				if (inventory.getInventory().containsKey(productCode)){
+					int amountToBuy = ui.quantityToPurchase();
+					TreeMap<String, Item> products = inventory.getInventory();
+				int	productQuantity = products.get(productCode).getQuanity();
+					if (amountToBuy <= productQuantity){
+						// send to Cart
+					}
+					else {
+						ui.displayErrorMessage(" There is not enough stock for that purchase.");
+					}
+				}
+				else {
+					ui.displayErrorMessage("That product does not exist");
+				}
+			}
 		else {
 			ui.displayErrorMessage("That is not a valid option. Please make another selection");
 		}

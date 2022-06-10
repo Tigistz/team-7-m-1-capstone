@@ -43,7 +43,7 @@ public class UserInterface {
         System.out.println("**************************************");
         System.out.println("Please select the action to perform");
         System.out.println("1.)Add Money\n2.) Select Products\n3.)CompleteTransaction");
-        System.out.println( "Current Balance: " + currentBalance);
+        System.out.println( "Current Balance: $" + currentBalance);
        String answer = userInput.nextLine();
         return answer;
     }
@@ -64,6 +64,19 @@ public class UserInterface {
             return 0.00;
         }
 
+    }
+
+    public  String selectProduct(){
+        System.out.println("Please enter the product you would like to purchase.");
+        String productWanted = userInput.nextLine();
+        return productWanted;
+
+    }
+    public int quantityToPurchase(){
+        System.out.println(" How many would you like to purchase?");
+        String quantityWanted = userInput.nextLine();
+        Integer quanity = Integer.parseInt(quantityWanted);
+        return quanity;
     }
 
 }
