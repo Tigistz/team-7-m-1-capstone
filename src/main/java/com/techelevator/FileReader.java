@@ -16,7 +16,7 @@ public class FileReader {
             scanner = new Scanner(itemFile);
             public List<Item> stockInventory() {
                 while (scanner.hasNextLine()) {
-                    
+
 
                 }
             }
