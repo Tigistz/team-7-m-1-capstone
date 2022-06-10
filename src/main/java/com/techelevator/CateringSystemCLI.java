@@ -27,6 +27,15 @@ String answer =	ui.displayMainMenu();
 	if (answer.equals("1")){
 	ui.displayCateringItems(inventory);
 	}
+	if (answer.equals(("2"))){
+		String subAnswer = ui.subMenu();
+		if (subAnswer.equals("1") || subAnswer.endsWith("2") || subAnswer.equals("3")){
+
+		}
+		else {
+			ui.displayErrorMessage("That is not a valid option. Please make another selection");
+		}
+	}
 
 
 }
