@@ -16,6 +16,9 @@ public class Item {
         this.price = price;
     }
 
+    public void setQuanity(int quanity) {
+        this.quanity = quanity;
+    }
 
     public String getProductCode() {
         return productCode;

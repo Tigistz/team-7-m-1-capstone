@@ -22,6 +22,12 @@ public class Cart {
         return cartTotal;
     }
 
+    public void emptyCart(){
+        for (Map.Entry<Item, Integer> entry : cartItems.entrySet()){
+            cartItems.remove(entry);
+        }
+    }
+
     public double getItemTotal(Map.Entry<Item , Integer> cartItem) {
         double itemTotal = cartItem.getKey().getPrice()* cartItem.getValue();
         return itemTotal;

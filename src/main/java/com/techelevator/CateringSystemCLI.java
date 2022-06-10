@@ -23,6 +23,7 @@ public class CateringSystemCLI {
 Inventory inventory = new Inventory();
 UserInterface ui = new UserInterface();
 Ledger ledger = new Ledger();
+Cart cart = new Cart();
 
 boolean isRunning = true;
 
@@ -58,7 +59,13 @@ String answer =	ui.displayMainMenu();
 					TreeMap<String, Item> products = inventory.getInventory();
 				int	productQuantity = products.get(productCode).getQuanity();
 					if (amountToBuy <= productQuantity){
-						// send to Cart
+						if(((products.get(productCode).getPrice() * amountToBuy) + cart.getCartTotal(cart.getCartItems()) < ledger.getCurrentBalance())){
+							products.get(productCode).setQuanity(products.get(productCode).getQuanity() - amountToBuy);
+							cart.addToTheCart(products.get(productCode), amountToBuy);
+						}
+						else {
+							ui.displayErrorMessage("Your current balance cannot afford that additional item.");
+						}
 					}
 					else {
 						ui.displayErrorMessage(" There is not enough stock for that purchase.");
