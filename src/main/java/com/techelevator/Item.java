@@ -5,9 +5,12 @@ public class Item {
     private double price;
     private int quanity;
     private String description;
+    private String productType;
 
+    public String getProductType() {
+        return productType;
+    }
 
-    
     // order of file B|B1|Soda|1.50
     public Item(String productCode, String description, double price){
         this.quanity = 25;
@@ -16,6 +19,9 @@ public class Item {
         this.price = price;
     }
 
+    public void setQuanity(int quanity) {
+        this.quanity = quanity;
+    }
 
     public String getProductCode() {
         return productCode;

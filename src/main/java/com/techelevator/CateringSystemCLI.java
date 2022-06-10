@@ -23,6 +23,7 @@ public class CateringSystemCLI {
 Inventory inventory = new Inventory();
 UserInterface ui = new UserInterface();
 Ledger ledger = new Ledger();
+Cart cart = new Cart();
 
 boolean isRunning = true;
 
@@ -58,7 +59,18 @@ String answer =	ui.displayMainMenu();
 					TreeMap<String, Item> products = inventory.getInventory();
 				int	productQuantity = products.get(productCode).getQuanity();
 					if (amountToBuy <= productQuantity){
-						// send to Cart
+						if(((products.get(productCode).getPrice() * amountToBuy) + cart.getCartTotal(cart.getCartItems()) < ledger.getCurrentBalance())){
+							products.get(productCode).setQuanity(products.get(productCode).getQuanity() - amountToBuy);
+							cart.addToTheCart(products.get(productCode), amountToBuy);
+							currentBalance = ledger.changeCurrentBalance(-(products.get(productCode).getPrice() * amountToBuy));
+							//TESTS
+							System.out.println(ledger.getCurrentBalance());
+							System.out.println(cart.getCartTotal(cart.getCartItems()));
+
+						}
+						else {
+							ui.displayErrorMessage("Your current balance cannot afford that additional item.");
+						}
 					}
 					else {
 						ui.displayErrorMessage(" There is not enough stock for that purchase.");
@@ -67,6 +79,14 @@ String answer =	ui.displayMainMenu();
 				else {
 					ui.displayErrorMessage("That product does not exist");
 				}
+			}
+			else if (subAnswer.equals("3")){
+				Map<Item, Integer> itemReceipt = cart.getCartItems();
+				double totalPrice = cart.getCartTotal(cart.getCartItems());
+				int[] changeGiven = ledger.changeToBeGiven(ledger.getCurrentBalance(), cart.getCartTotal(cart.getCartItems()));
+				ui.printReceipt(itemReceipt, totalPrice, changeGiven);
+				cart.emptyCart();
+				currentBalance = 0.00;
 			}
 		else {
 			ui.displayErrorMessage("That is not a valid option. Please make another selection");
