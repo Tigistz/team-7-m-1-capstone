@@ -85,6 +85,8 @@ String answer =	ui.displayMainMenu();
 				double totalPrice = cart.getCartTotal(cart.getCartItems());
 				int[] changeGiven = ledger.changeToBeGiven(ledger.getCurrentBalance(), cart.getCartTotal(cart.getCartItems()));
 				ui.printReceipt(itemReceipt, totalPrice, changeGiven);
+				cart.emptyCart();
+				currentBalance = 0.00;
 			}
 		else {
 			ui.displayErrorMessage("That is not a valid option. Please make another selection");
