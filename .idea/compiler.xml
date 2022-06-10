@@ -11,6 +11,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="m01-week-4-review-lecture" target="11" />
+      <module name="m01d12-polymorphism-lecture-final" target="11" />
+      <module name="unit-testing-exercise" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

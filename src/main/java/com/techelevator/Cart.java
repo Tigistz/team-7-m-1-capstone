@@ -11,7 +11,7 @@ public class Cart {
         cartItems.put(itemToAdd,quantity);
 
     }
-    
+
 
 
     public double getCartTotal(Map<Item , Integer> finalCart) {
