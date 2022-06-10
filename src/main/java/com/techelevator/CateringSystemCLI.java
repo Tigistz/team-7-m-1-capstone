@@ -62,6 +62,11 @@ String answer =	ui.displayMainMenu();
 						if(((products.get(productCode).getPrice() * amountToBuy) + cart.getCartTotal(cart.getCartItems()) < ledger.getCurrentBalance())){
 							products.get(productCode).setQuanity(products.get(productCode).getQuanity() - amountToBuy);
 							cart.addToTheCart(products.get(productCode), amountToBuy);
+							currentBalance = ledger.changeCurrentBalance(-(products.get(productCode).getPrice() * amountToBuy));
+							//TESTS
+							System.out.println(ledger.getCurrentBalance());
+							System.out.println(cart.getCartTotal(cart.getCartItems()));
+
 						}
 						else {
 							ui.displayErrorMessage("Your current balance cannot afford that additional item.");
@@ -74,6 +79,12 @@ String answer =	ui.displayMainMenu();
 				else {
 					ui.displayErrorMessage("That product does not exist");
 				}
+			}
+			else if (subAnswer.equals("3")){
+				Map<Item, Integer> itemReceipt = cart.getCartItems();
+				double totalPrice = cart.getCartTotal(cart.getCartItems());
+				int[] changeGiven = ledger.changeToBeGiven(ledger.getCurrentBalance(), cart.getCartTotal(cart.getCartItems()));
+				ui.printReceipt(itemReceipt, totalPrice, changeGiven);
 			}
 		else {
 			ui.displayErrorMessage("That is not a valid option. Please make another selection");

@@ -1,13 +1,17 @@
 package com.techelevator;
 
 public class Entre extends Item{
-    private String productType;
-    public Entre(String productType,String productCode, String description, double price) {
+
+    public Entre(String productCode, String description, double price) {
         super(productCode, description, price);
-        this.productType = productType;
+
 }
     public String toString() {
         return "Did you remember Dessert?";
+    }
+    public String getProductType() {
+        String productType = "Entre";
+        return productType;
     }
 
 }
