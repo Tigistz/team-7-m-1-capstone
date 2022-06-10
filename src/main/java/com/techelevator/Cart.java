@@ -1,40 +1,39 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Cart {
     private double cartTotal;
     private double itemTotal;
-    private  Map<Item, Integer> cartItems = new HashMap<>();
+    private List<Item> cartItems = new ArrayList<>();
 
-    public void addToTheCart(Item itemToAdd,int quantity){
-        cartItems.put(itemToAdd,quantity);
+    public void addToTheCart(Item itemToAdd){
+        cartItems.add(itemToAdd);
 
     }
 
 
 
-    public double getCartTotal(Map<Item , Integer> cartItems) {
+    public double getCartTotal() {
         cartTotal = 0.00;
-        for (Map.Entry<Item , Integer> item: cartItems.entrySet()){
-           cartTotal = cartTotal + getItemTotal(item);
+
+        for (Item item : cartItems) {
+            cartTotal += item.getPrice();
         }
+
         return cartTotal;
     }
 
     public void emptyCart(){
-        for (Map.Entry<Item, Integer> entry : cartItems.entrySet()){
-            cartItems.remove(entry);
-        }
+        cartItems.clear();
     }
 
-    public double getItemTotal(Map.Entry<Item , Integer> cartItem) {
-        double itemTotal = cartItem.getKey().getPrice()* cartItem.getValue();
-        return itemTotal;
-    }
 
-    public Map<Item , Integer> getCartItems() {
+
+    public List<Item> getCartItems() {
         return cartItems;
     }
 

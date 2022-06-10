@@ -3,7 +3,7 @@ package com.techelevator;
 public class Item {
     private String productCode;
     private double price;
-    private int quanity;
+    private int quantity;
     private String description;
     private String productType;
 
@@ -12,15 +12,19 @@ public class Item {
     }
 
     // order of file B|B1|Soda|1.50
-    public Item(String productCode, String description, double price){
-        this.quanity = 25;
+    public Item(String productCode, String description, double price, int quantity){
+        this.quantity = quantity;
         this.productCode= productCode;
         this.description = description;
         this.price = price;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getProductCode() {
@@ -31,9 +35,7 @@ public class Item {
         return price;
     }
 
-    public int getQuanity() {
-        return quanity;
-    }
+
 
     public String getDescription() {
         return description;

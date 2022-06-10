@@ -4,7 +4,7 @@ public class Beverage extends Item {
 
 
     public Beverage( String productCode, String description, double price) {
-        super(productCode, description, price);
+        super(productCode, description, price, 25);
     }
 
 

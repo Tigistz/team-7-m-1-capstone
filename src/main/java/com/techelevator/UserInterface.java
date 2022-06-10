@@ -17,28 +17,24 @@ public class UserInterface {
 
     }
 
-    public void displayCateringItems(Inventory inventory) {
+    public void displayCateringItems(List<Item> items) {
 
         String header = String.format("%-15s%-25s%-10s%-10s", "Product Code", "Description", "Qty", "Price");
         System.out.println(header);
-        // for (Map.Entry<String, String> nameZip : nameToZip.entrySet())
-        // Set<String> keys = stateCodes.keySet();
-        Map<String, Item> inventoryMap = inventory.getInventory();
-        //for (Map.Entry<K, V> entry : myMap.entrySet()) {
-        //     System.out.println("Key: " + entry.getKey() + ". Value: " + entry.getValue());
 
-        for (Map.Entry<String, Item> key : inventoryMap.entrySet()) {
-            int quantity = key.getValue().getQuanity();
-          if (quantity == 0){
-              String formattedString = String.format("%-15s%-25s%-10s%-10s", key.getValue().getProductCode(), key.getValue().getDescription(), "SOLD OUT", key.getValue().getPrice());
-              System.out.println(formattedString);
 
-          }
+        for (Item item : items ) {
+            int quantity = item.getQuantity();
+            if (quantity == 0){
+               String formattedString = String.format("%-15s%-25s%-10s%-10s", item.getProductCode(), item.getDescription(), "SOLD OUT", item.getPrice());
+               System.out.println(formattedString);
+
+            }
             else {
 
-              String formattedString = String.format("%-15s%-25s%-10s%-10s", key.getValue().getProductCode(), key.getValue().getDescription(), key.getValue().getQuanity(), key.getValue().getPrice());
+              String formattedString = String.format("%-15s %-25s %-10s $%-10s", item.getProductCode(), item.getDescription(), item.getQuantity(), item.getPrice());
               System.out.println(formattedString);
-          }
+            }
 
 
         }

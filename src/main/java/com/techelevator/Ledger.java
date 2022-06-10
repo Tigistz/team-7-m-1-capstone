@@ -11,9 +11,14 @@ public class Ledger {
         this.currentBalance = 0.00;
     }
 
-    public double changeCurrentBalance(double amountToChangeBy) {
-        this.currentBalance = currentBalance + amountToChangeBy;
-        return currentBalance;
+    public double withdrawFunds(double amountToChangeBy) {
+        this.currentBalance = this.currentBalance - amountToChangeBy;
+        return this.currentBalance;
+    }
+
+    public double addFunds(double amountToChangeBy) {
+        this.currentBalance = this.currentBalance + amountToChangeBy;
+        return  this.currentBalance;
     }
 
 
@@ -43,6 +48,7 @@ public class Ledger {
            fiftyReturn = (int) balance / 50;
            BigDecimal balanceDecimal = new BigDecimal(balance);
            BigDecimal fiftyReturnDecimal = new BigDecimal(fiftyReturn);
+//           BigDecimal remainder = balanceDecimal.subtract();
            BigDecimal newBalanceResult = balanceDecimal.subtract(balanceDecimal.multiply(fiftyReturnDecimal));
            balance = newBalanceResult.doubleValue();
 
@@ -50,37 +56,54 @@ public class Ledger {
 
            if (balance >= 20) {
                twentyReturn = (int) balance / 20;
-               balance = balance - (twentyReturn * 20);
-
+               BigDecimal balanceDecimal = new BigDecimal(balance);
+               BigDecimal twentyReturnDecimal = new BigDecimal(twentyReturn);
+               BigDecimal newBalanceResult = balanceDecimal.subtract(balanceDecimal.multiply(twentyReturnDecimal));
+               balance = newBalanceResult.doubleValue();
            }
            if (balance >= 10) {
                tenReturn = (int) balance / 10;
-               balance = balance - (tenReturn * 10);
-
+               BigDecimal balanceDecimal = new BigDecimal(balance);
+               BigDecimal tenReturnDecimal = new BigDecimal(tenReturn);
+               BigDecimal newBalanceResult = balanceDecimal.subtract(balanceDecimal.multiply(tenReturnDecimal));
+               balance = newBalanceResult.doubleValue();
            }
            if (balance >= 5) {
                fiveReturn = (int) balance / 5;
-               balance = balance - (fiveReturn * 5);
-
+               BigDecimal balanceDecimal = new BigDecimal(balance);
+               BigDecimal fiveReturnDecimal = new BigDecimal(fiveReturn);
+               BigDecimal newBalanceResult = balanceDecimal.subtract(balanceDecimal.multiply(fiveReturnDecimal));
+               balance = newBalanceResult.doubleValue();
            }
            if (balance >= 1) {
                oneReturn = (int) balance / 1;
-               balance = balance - (oneReturn * 1);
+               BigDecimal balanceDecimal = new BigDecimal(balance);
+               BigDecimal oneReturnDecimal = new BigDecimal(oneReturn);
+               BigDecimal newBalanceResult = balanceDecimal.subtract(balanceDecimal.multiply(oneReturnDecimal));
+               balance = newBalanceResult.doubleValue();
 
            }
            if (balance >= 0.25) {
                quarterReturn = (int) (balance / .25);
-               balance = balance - (quarterReturn * .25);
-
+               BigDecimal balanceDecimal = new BigDecimal(balance);
+               BigDecimal quarterReturnDecimal = new BigDecimal(quarterReturn);
+               BigDecimal newBalanceResult = balanceDecimal.subtract(balanceDecimal.multiply(quarterReturnDecimal));
+               balance = newBalanceResult.doubleValue();
            }
            if (balance >= 0.10) {
                dimeReturn = (int) (balance / .10);
-               balance = balance - (dimeReturn * .10);
+               BigDecimal balanceDecimal = new BigDecimal(balance);
+               BigDecimal dimeReturnDecimal = new BigDecimal(dimeReturn);
+               BigDecimal newBalanceResult = balanceDecimal.subtract(balanceDecimal.multiply(dimeReturnDecimal));
+               balance = newBalanceResult.doubleValue();
 
            }
            if (balance >= 0.05) {
                nickleReturn = (int) (balance / .05);
-               balance = balance - (dimeReturn * .05);
+               BigDecimal balanceDecimal = new BigDecimal(balance);
+               BigDecimal nickleReturnDecimal = new BigDecimal(nickleReturn);
+               BigDecimal newBalanceResult = balanceDecimal.subtract(balanceDecimal.multiply(nickleReturnDecimal));
+               balance = newBalanceResult.doubleValue();
            }
 
 
@@ -100,7 +123,7 @@ public class Ledger {
 
 
     public double getCurrentBalance() {
-        return currentBalance;
+        return this.currentBalance;
     }
 
     public int[] getChangeToBeReturned() {
