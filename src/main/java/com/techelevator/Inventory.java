@@ -30,7 +30,9 @@ public class Inventory {
     public Item buildInventoryCartItem(String productCode, int quantityPurchased) {
         //(String productCode, String description, double price)
         Item existingItemFromMap = inventory.get(productCode);
-        Item newItem = new Item(productCode, existingItemFromMap.getDescription(), existingItemFromMap.getPrice(), quantityPurchased);
+
+        Item newItem = new Item(existingItemFromMap.getProductType(), productCode, existingItemFromMap.getDescription(), existingItemFromMap.getPrice(), quantityPurchased);
+
 
        //subtract quantity purchased from existingItemInMap
        existingItemFromMap.setQuantity(existingItemFromMap.getQuantity() - quantityPurchased);

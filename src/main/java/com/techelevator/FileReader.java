@@ -25,22 +25,22 @@ public class FileReader {
                 String[] splitProduct = nextProduct.split("\\|");
                 if (splitProduct[0].equals("A")) {
                     //String productType,String productCode, String description, double price)
-                    Item newItem = new Appetizer( splitProduct[1], splitProduct[2], Double.parseDouble(splitProduct[3]));
+                    Item newItem = new Appetizer(splitProduct[0], splitProduct[1], splitProduct[2], Double.parseDouble(splitProduct[3]));
                     inventory.add(newItem);
                 }
                 if (splitProduct[0].equals("B")) {
                     //String productType,String productCode, String description, double price)
-                    Item newItem = new Beverage( splitProduct[1], splitProduct[2], Double.parseDouble(splitProduct[3]));
+                    Item newItem = new Beverage(splitProduct[0], splitProduct[1], splitProduct[2], Double.parseDouble(splitProduct[3]));
                     inventory.add(newItem);
                 }
                 if (splitProduct[0].equals("D")) {
                     //String productType,String productCode, String description, double price)
-                    Item newItem = new Dessert( splitProduct[1], splitProduct[2], Double.parseDouble(splitProduct[3]));
+                    Item newItem = new Dessert(splitProduct[0], splitProduct[1], splitProduct[2], Double.parseDouble(splitProduct[3]));
                     inventory.add(newItem);
                 }
                 if (splitProduct[0].equals("E")) {
                     //String productType,String productCode, String description, double price)
-                    Item newItem = new Entre( splitProduct[1], splitProduct[2], Double.parseDouble(splitProduct[3]));
+                    Item newItem = new Entre(splitProduct[0], splitProduct[1], splitProduct[2], Double.parseDouble(splitProduct[3]));
                     inventory.add(newItem);
 
                 }

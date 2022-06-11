@@ -3,8 +3,8 @@ package com.techelevator;
 public class Beverage extends Item {
 
 
-    public Beverage( String productCode, String description, double price) {
-        super(productCode, description, price, 25);
+    public Beverage(String productType, String productCode, String description, double price) {
+        super(productType,productCode, description, price, 25);
     }
 
 

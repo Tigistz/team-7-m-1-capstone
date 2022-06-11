@@ -84,15 +84,21 @@ public class UserInterface {
         return quanity;
     }
 
-    public void printReceipt(Map<Item,Integer> purchasedItems, double cartTotal, int[] change){
-        for (Map.Entry<Item, Integer> item : purchasedItems.entrySet()){
-         String receiptFormat =  String.format("%-5s%-20s%-25s%-8s%-10s%-30s", item.getValue(), item.getKey().getProductType(), item.getKey().getDescription(), item.getKey().getPrice(),item.getKey().getPrice() *item.getValue(),item.getKey().toString());
+    public void printReceipt(List<Item> cartItems, int[] change){
+        double cartTotal = 0.0;
+        for (Item item : cartItems){
+            cartTotal = cartTotal + (item.getPrice() * item.getQuantity());
+
+         String receiptFormat =  String.format("%-5s %-20s %-25s $%-8s $%-10s %-30s", item.getQuantity() , item.getProductType(), item.getDescription(), item.getPrice(),item.getPrice() * item.getQuantity(), item.getMessage());
             System.out.println(receiptFormat);
         }
-        System.out.println(" Your Total is: " + cartTotal);
+        System.out.println(" Your Total is: $" + cartTotal);
         System.out.println("You received (" + change[0] + ") Fifties, (" + change[1]+ ") Twenties, (" + change[2] + ") Tens, (" + change[3] + ") Fives, (" + change[4] + ") Ones, (" + change[5] + ") Quarters, (" + change[6] + ") Dimes, (" + change[7] + ") Nickles in change.");
         ;
 
+    }
+    public void displayMessage (String message){
+        System.out.println(message);
     }
 
 }

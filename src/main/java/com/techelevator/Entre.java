@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class Entre extends Item{
 
-    public Entre(String productCode, String description, double price) {
-        super(productCode, description, price, 25);
+    public Entre(String productType, String productCode, String description, double price) {
+        super(productType,productCode, description, price, 25);
 
 }
     public String toString() {

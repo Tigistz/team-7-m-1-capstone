@@ -1,8 +1,8 @@
 package com.techelevator;
 
 public class Dessert extends Item{
-        public Dessert(String productCode, String description, double price) {
-        super(productCode, description, price, 25);
+        public Dessert(String productType, String productCode, String description, double price) {
+        super(productType,productCode, description, price, 25);
 
 }
     public String toString() {

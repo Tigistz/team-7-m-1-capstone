@@ -56,14 +56,11 @@ public class CateringSystemCLI {
                                 int amountToBuy = ui.quantityToPurchase();
 
                                 //ask inventory class is there enough inventory to buy
-                                if (inventory.isEnoughToBuy(productCode, amountToBuy) && ((amountToBuy * inventory.getItemPrice(productCode)) <= ledger.getCurrentBalance())) {
-
-                                    cart.addToTheCart(inventory.buildInventoryCartItem(productCode, amountToBuy));
-
-
-                                    //update our ledger with amount purchased
+                                if (inventory.isEnoughToBuy(productCode, amountToBuy)) {
+                                    if (((amountToBuy * inventory.getItemPrice(productCode)) <= ledger.getCurrentBalance())){
                                     ledger.withdrawFunds(amountToBuy * inventory.getItemPrice(productCode));
-                                    ui.displayErrorMessage("Item " + productCode + " has been added");
+                                    cart.addToTheCart(inventory.buildInventoryCartItem(productCode,amountToBuy));
+                                    ui.displayMessage("Item " + productCode + " has been added");
 
 //                                    if (((products.get(productCode).getPrice() * amountToBuy) + cart.getCartTotal(cart.getCartItems()) < ledger.getCurrentBalance())) {
 //                                        products.get(productCode).setQuanity(products.get(productCode).getQuanity() - amountToBuy);
@@ -84,11 +81,11 @@ public class CateringSystemCLI {
                         }
                     } else if (subAnswer.equals("3")) {
                         List<Item> itemReceipt = cart.getCartItems();
-//                            double totalPrice = cart.getCartTotal(cart.getCartItems());
-//                            int[] changeGiven = ledger.changeToBeGiven(ledger.getCurrentBalance(), cart.getCartTotal(cart.getCartItems()));
-//                            ui.printReceipt(itemReceipt);
-//                            cart.emptyCart();
-//
+                            int[] changeGiven = ledger.changeToBeGiven(ledger.getCurrentBalance());
+                           ui.printReceipt(itemReceipt,changeGiven);
+                            cart.emptyCart();
+                            break;
+
                     } else {
                         ui.displayErrorMessage("That is not a valid option. Please make another selection");
                     }
@@ -101,5 +98,5 @@ public class CateringSystemCLI {
 
 
     }
-}
+}}
 

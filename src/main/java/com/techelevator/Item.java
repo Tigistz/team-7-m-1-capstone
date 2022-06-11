@@ -12,12 +12,27 @@ public class Item {
     }
 
     // order of file B|B1|Soda|1.50
-    public Item(String productCode, String description, double price, int quantity){
+    public Item(String productType, String  productCode, String description, double price, int quantity){
         this.quantity = quantity;
         this.productCode= productCode;
         this.description = description;
         this.price = price;
+        this.productType = productType;
     }
+public String getMessage(){
+        if (productType.equals("Appetizer")){
+            return "You might need extra plates.";
+        }
+        if (productType.equals("Dessert")){
+            return "Coffee goes with Dessert";
+        }
+        if (productType.equals("Entre")){
+            return "Did you remember Dessert?";
+        }
+        else {
+            return "Don't forget Ice.";
+        }
+}
 
     public int getQuantity() {
         return quantity;
