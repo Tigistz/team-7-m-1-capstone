@@ -23,6 +23,7 @@ public class CateringSystemCLI {
         UserInterface ui = new UserInterface();
         Ledger ledger = new Ledger();
         Cart cart = new Cart();
+        LogWriter logWriter = new LogWriter();
 
         boolean isRunning = true;
 
@@ -43,6 +44,7 @@ public class CateringSystemCLI {
                             double moneyToAdd = ui.addMoney();
                             if (moneyToAdd + ledger.getCurrentBalance() <= 500) {
                                 currentBalance = ledger.addFunds(moneyToAdd);
+                                logWriter.logAddMoney(ledger.getCurrentBalance(), moneyToAdd);
 
 
                             } else {
@@ -57,46 +59,46 @@ public class CateringSystemCLI {
 
                                 //ask inventory class is there enough inventory to buy
                                 if (inventory.isEnoughToBuy(productCode, amountToBuy)) {
-                                    if (((amountToBuy * inventory.getItemPrice(productCode)) <= ledger.getCurrentBalance())){
-                                    ledger.withdrawFunds(amountToBuy * inventory.getItemPrice(productCode));
-                                    cart.addToTheCart(inventory.buildInventoryCartItem(productCode,amountToBuy));
-                                    ui.displayMessage("Item " + productCode + " has been added");
+                                    if (((amountToBuy * inventory.getItemPrice(productCode)) <= ledger.getCurrentBalance())) {
+                                        ledger.withdrawFunds(amountToBuy * inventory.getItemPrice(productCode));
+                                        cart.addToTheCart(inventory.buildInventoryCartItem(productCode, amountToBuy));
+                                        logWriter.logItem((inventory.buildInventoryCartItem(productCode, amountToBuy)), ledger.getCurrentBalance());
+                                        ui.displayMessage("**Item " + productCode + " has been added**");
 
-//                                    if (((products.get(productCode).getPrice() * amountToBuy) + cart.getCartTotal(cart.getCartItems()) < ledger.getCurrentBalance())) {
-//                                        products.get(productCode).setQuanity(products.get(productCode).getQuanity() - amountToBuy);
-//                                        cart.addToTheCart(products.get(productCode), amountToBuy);
-//                                        currentBalance = ledger.changeCurrentBalance(-(products.get(productCode).getPrice() * amountToBuy));
-//                                        //TESTS
-//                                        System.out.println(ledger.getCurrentBalance());
-//                                        System.out.println(cart.getCartTotal(cart.getCartItems()));
+//
 
+                                    } else {
+                                        ui.displayErrorMessage("Your current balance cannot afford that additional item.");
+                                    }
                                 } else {
-                                    ui.displayErrorMessage("Your current balance cannot afford that additional item.");
+                                    ui.displayErrorMessage(" There is not enough stock for that purchase.");
                                 }
                             } else {
-                                ui.displayErrorMessage(" There is not enough stock for that purchase.");
+                                ui.displayErrorMessage("That product does not exist");
                             }
-                        } else {
-                            ui.displayErrorMessage("That product does not exist");
-                        }
-                    } else if (subAnswer.equals("3")) {
-                        List<Item> itemReceipt = cart.getCartItems();
+                        } else if (subAnswer.equals("3")) {
+                            List<Item> itemReceipt = cart.getCartItems();
+                            logWriter.logGiveChange(ledger.getCurrentBalance());
                             int[] changeGiven = ledger.changeToBeGiven(ledger.getCurrentBalance());
-                           ui.printReceipt(itemReceipt,changeGiven);
+                            ui.printReceipt(itemReceipt, changeGiven);
                             cart.emptyCart();
                             break;
 
-                    } else {
-                        ui.displayErrorMessage("That is not a valid option. Please make another selection");
+                        } else {
+                            ui.displayErrorMessage("That is not a valid option. Please make another selection");
+                        }
                     }
+
+
                 }
 
-
+            } else if (answer.equals("3")) {
+                ui.displayMessage("Thank you for using Team 7 Catering Services!");
+                isRunning = false;
             }
 
+
         }
-
-
     }
-}}
+}
 

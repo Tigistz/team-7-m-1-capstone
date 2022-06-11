@@ -26,13 +26,13 @@ public class UserInterface {
         for (Item item : items ) {
             int quantity = item.getQuantity();
             if (quantity == 0){
-               String formattedString = String.format("%-15s%-25s%-10s%-10s", item.getProductCode(), item.getDescription(), "SOLD OUT", item.getPrice());
+               String formattedString = String.format("%-15s %-25s %-10s $%.2f", item.getProductCode(), item.getDescription(), "SOLD OUT", item.getPrice());
                System.out.println(formattedString);
 
             }
             else {
 
-              String formattedString = String.format("%-15s %-25s %-10s $%-10s", item.getProductCode(), item.getDescription(), item.getQuantity(), item.getPrice());
+              String formattedString = String.format("%-15s %-25s %-10s $%.2f", item.getProductCode(), item.getDescription(), item.getQuantity(), item.getPrice());
               System.out.println(formattedString);
             }
 
@@ -45,10 +45,12 @@ public class UserInterface {
     //    (3) Complete Transaction
     //    Current Account Balance: $0.00
     public String subMenu(double currentBalance){
-        System.out.println("**************************************");
+
         System.out.println("Please select the action to perform");
         System.out.println("1.)Add Money\n2.) Select Products\n3.)CompleteTransaction");
-        System.out.println( "Current Balance: $" + currentBalance);
+        System.out.print("Current Balance: ");
+        System.out.printf("$%.2f", + currentBalance);
+        System.out.println();
        String answer = userInput.nextLine();
         return answer;
     }
@@ -60,7 +62,7 @@ public class UserInterface {
         System.out.println("Please insert(type) your bills. Only accepts $1,$5,$10,$20,$50,and $100 dollar bills");
       String bill =  userInput.nextLine();
         if (bill.equals("1") || bill.equals("5") || bill.equals("10") || bill.equals("20") || bill.equals("50") || bill.equals("100")){
-            System.out.println("Money accepted.");
+            System.out.println("**Money accepted.**");
             Double billAsDouble = Double.parseDouble(bill);
             return  billAsDouble;
         }
@@ -92,7 +94,10 @@ public class UserInterface {
          String receiptFormat =  String.format("%-5s %-20s %-25s $%-8s $%-10s %-30s", item.getQuantity() , item.getProductType(), item.getDescription(), item.getPrice(),item.getPrice() * item.getQuantity(), item.getMessage());
             System.out.println(receiptFormat);
         }
-        System.out.println(" Your Total is: $" + cartTotal);
+        System.out.print("Your total is: ");
+        System.out.printf("$%.2f", cartTotal);
+        System.out.println();
+
         System.out.println("You received (" + change[0] + ") Fifties, (" + change[1]+ ") Twenties, (" + change[2] + ") Tens, (" + change[3] + ") Fives, (" + change[4] + ") Ones, (" + change[5] + ") Quarters, (" + change[6] + ") Dimes, (" + change[7] + ") Nickles in change.");
         ;
 
