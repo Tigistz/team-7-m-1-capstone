@@ -17,16 +17,6 @@ public class Cart {
 
 
 
-    public double getCartTotal() {
-        cartTotal = 0.00;
-
-        for (Item item : cartItems) {
-            cartTotal += item.getPrice();
-        }
-
-        return cartTotal;
-    }
-
     public void emptyCart(){
         cartItems.clear();
     }
